@@ -1,0 +1,449 @@
+DAY3
+
+//Access specifiers:
+private: same class
+public: same class ,same package
+protected: same class, same package, subclass
+default: same class, same package, subclass, outside package
+
+//Non access modifiers:
+static, final, abstract, synchronised, volatile, transient, native, strictfp
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+//OOPS
+WHAT: A concept where a code is structured, an object is manipulated and used according to the need.
+
+//CONCEPTS OF OOPS:
+1. CLASS:  
+  - is a template/blueprint to create multiple objects(using single blueprint)
+
+2. OBJECT: 
+  - real world entity (represents the real world existing objects), objects created from a class extracted from package in java.
+
+3. ABSTRACTION: 
+  - hides the internal codes and inner details, only shows the necessary functionalites and background details.
+  - uses abstract keyword and interface 
+  - EG:
+package com.demo;
+
+public class Oops 
+{
+        public static void main(String args[])
+        {
+                Abstract a= new Abstract();
+                {
+                        public void abname()
+                        {
+                                System.out.println("Abstract name");
+                        }
+                }; 
+        }
+}
+
+abstract class Abstract
+{
+        public abstract void name();
+        public void marks() //concrete method
+        {
+                System.out.println("80%");
+        }
+}
+
+interface Sefi
+{
+        public void abname();
+        public void marks();
+}
+
+4. ENCAPSULATION: 
+  - binding the data and methods of a class in a single unit.
+  - EG:
+package com.demo;
+import java.util.Date;
+class Encapsulation
+{
+        private String username;
+        private String password;
+        private String email;
+        private long phoneNumber;
+        private String address;
+        private Date CreatedAt;
+        private Date UpdatedAt;
+        private boolean IsActive;
+
+
+        public String getUsername()
+        {
+                return username;
+        }
+        public void setUsername(String username)
+        {
+                this.username=username;
+        }
+
+
+        public String getPassword()
+        {
+                return password;
+        }
+        public void setPassword(String password)
+        {
+                this.password=password;
+        }
+
+
+        public String getEmail()
+        {
+                return email;
+        }
+        public void setEmail(String email)
+        {
+                this.email=email;
+        }
+
+
+        public long getPhoneNumber()
+        {
+                return phoneNumber;
+        }
+        public void setPhoneNumber(long phoneNumber)
+        {
+                this.phoneNumber=phoneNumber;
+        }
+
+
+        public String getAddress()
+        {
+                return address;
+        }
+        public void setAddress(String address)
+        {
+                this.address=address;
+        }
+
+
+        public Date getCreatedAt()
+        {
+                return CreatedAt;
+        }
+        public void setCreatedAt(Date CreatedAt)
+        {
+                this.CreatedAt=CreatedAt;
+        }
+
+
+        public Date UpdatedAt()
+        {
+                return UpdatedAt;
+        }
+        public void setUpdatedAt(Date UpdatedAt)
+        {
+                this.UpdatedAt=UpdatedAt;
+        }
+
+
+        public boolean IsActive()
+        {
+                return IsActive;
+        }
+        public void setIsActive(boolean IsActive)
+        {
+                this.IsActive=IsActive;
+        }
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------
+package com.demo;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Register
+{
+        public static void main(String args[])
+        {
+                Scanner in = new Scanner(System.in);
+                Encapsulation e=new Encapsulation();
+
+                ArrayList<Encapsulation> arraylist=new ArrayList<>();
+
+                boolean run = true;
+                while(run)
+                {
+                        System.out.println("1)Are you user");
+                        System.out.println("2)Existing user");
+                        System.out.println("3)Show all users");
+                        System.out.println("4)Exists");
+                        System.out.println("Enter the number:");
+                        int opt=in.nextInt();
+                        in.nextLine();
+
+                if(opt==1)
+                {
+                System.out.println("Enter your Username");
+                String username=in.nextLine();
+                System.out.println("Enter your Password");
+                String password=in.nextLine();
+                System.out.println("Enter your Email");
+                String email=in.nextLine();
+                System.out.println("Enter your PhoneNumber");
+                long phoneNumber=in.nextLong();
+                in.nextLine();
+                System.out.println("Enter your Address");
+                String address=in.nextLine();
+                Date CreatedAt=new Date();
+                Date UpdatedAt=new Date();
+                boolean IsActive=true;
+
+                e.setUsername(username);
+                e.setPassword(password);
+                e.setEmail(email);
+                e.setAddress(address);
+                e.setPhoneNumber(phoneNumber);
+                e.setCreatedAt(CreatedAt);
+                e.setUpdatedAt(UpdatedAt);
+                e.setIsActive(IsActive);
+
+                arraylist.add(e);
+                }
+
+                else if(opt ==2)
+                {
+                        boolean user=false;
+                        System.out.println("Enter username:");
+                        String name=in.next();
+
+                        System.out.println("Enter your password:");
+                        String password=in.next();
+
+                        for(int i=0;i<arraylist.size();i++)
+                        {
+                                Encapsulation userlogin = arraylist.get(i);
+
+                                if(userlogin.getUsername().equals(name) && userlogin.getPassword().equals(password))
+                                {
+                                        System.out.println("You're logged in!");
+                                        System.out.println("You're profile");
+                                        System.out.println(userlogin.getUsername());
+                                        System.out.println(userlogin.getPassword());
+                                        System.out.println(userlogin.getEmail());
+                                        System.out.println(userlogin.getAddress());
+                                        System.out.println(userlogin.getPhoneNumber());
+                                        /*
+                                        System.out.println(userlogin.getCreatedAt());
+                                        System.out.println(userlogin.UpdatedAt());
+                                        System.out.println(userlogin.IsActive());
+                                        */
+                                        user=true;
+                                        break;
+                                }
+                        }
+                        if(!user)
+                        {
+                                System.out.println("Invalid username and password");
+                        }
+
+                        System.out.println(e.getUsername());
+                        System.out.println(e.getPassword());
+                        System.out.println(e.getEmail());
+                        System.out.println(e.getAddress());
+                        System.out.println(e.getPhoneNumber());
+                        System.out.println(e.getCreatedAt());
+                        System.out.println(e.UpdatedAt());
+                        System.out.println(e.IsActive());
+                }
+
+                else if(opt == 3)
+                {
+                        System.out.println(arraylist);
+                }
+
+                else if(opt ==4)
+                {
+                        run= false;
+
+                }
+                else
+                {
+                        System.out.println("INVALID INPUT, ENTER CORRECT NUMBER");
+                }
+
+        }
+        in.close();
+}
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+5. INHERITANCE: 
+  - inheriting the properties from the parent class to the child class.
+  - types:
+
+a) Single
+- PARENT -> CHILD
+- class to class or interface to interface (extends)
+- class to interface or interface to class (implements)
+- EG:
+package com.demo;
+
+public class SingleInheritance extends Parent
+{
+        public static void main(String args[]) 
+        {
+                add();
+                System.out.println(c);
+
+        }
+} 
+
+class Parent
+{
+        public static int a=10;
+        public static int b=20;
+        public static int c=a+b;
+        static int add()
+        {
+                return c;
+        }
+}
+
+b) Multiple
+- PARENT PARENT PARENT -> CHILD
+- EG:
+package com.demo;
+
+public interface MultipleInheritance extends THREE, FOUR, FIVE
+{
+        public void ONE();
+        public void TWO();
+}
+
+interface THREE
+{
+        public void ONE();
+        public void TWO();
+}
+
+interface FOUR
+{
+        public void ONE();
+        public void TWO();
+}
+
+interface FIVE
+{
+        public void ONE();
+        public void TWO();
+}
+------------------------------------------------------------------------------------------------------------------------------------------------
+package com.demo;
+
+public class MultipleInheritance2 
+{
+        public static void main(String args[])
+        {
+                MultipleInheritance mi=new MultipleInheritance() 
+                {
+                        public void ONE()
+                        {
+
+                        }
+                        public void TWO()
+                        {
+
+                        }
+                };
+        }
+}
+
+c) Multilevel
+- PARENT1->PARENT2(CHILD1)->PARENT3(CHILD2)
+- EG:
+package com.demo;
+
+public class MultiLevel extends Parent1
+{
+        public static void main(String args[])
+        {
+                System.out.println("Multilevel class");
+                Parent1.Aclass();
+        }
+}
+
+class Parent1 extends Child
+{
+        public int a=10;
+        static void Aclass()
+        {
+                System.out.println("A class details");
+
+        }
+}
+
+class Child extends GrandChild
+{
+        static void Bclass()
+        {
+                System.out.println("B class details");
+
+        }
+}
+
+class GrandChild 
+{
+        public int a=10;
+        static void Class()
+        {
+                System.out.println("GrandChild class");
+
+        }
+}
+
+d) Hierarchial
+- TREE STRUCTURE
+- EG:
+package com.demo;
+public class Hierarchical 
+{
+        public static void main(String args[])
+        {
+                Child1 c1 = new Child1();
+                Child2 c2 = new Child2();
+                c1.access();
+                c2.access();
+        }
+}
+
+class Parent1
+{
+        int i=10,j=20;
+        public void add(int i, int j)
+        {
+                System.out.println(i+j);
+        }
+}
+
+class Child1 extends Parent1
+{
+        int i=20,j=30;
+        public void access()
+        {
+        Parent1 p1=new Parent1();
+        p1.add(i,j);
+        }
+}
+
+class Child2 extends Parent1
+{
+        int i=30,j=40;
+        public void access()
+        {
+        Parent1 p1=new Parent1();
+        p1.add(i,j);
+}
+}
+
+
+e) Hybrid
+- HIERARCHIAL+MULTIPLE
+
+6. POLYMORPHISM:
