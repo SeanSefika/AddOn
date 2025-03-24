@@ -693,6 +693,8 @@ EXCEPTION HANDLING:
                 - index out of bound
                 - number format exception
 - TRY, CATCH, THROW, THROWS, FINALLY
+- throw: explicitly throws error, given inside block of code, can be used in check and unchecked exceptions.
+- throws: implicitly throws error, given in method header, can be used only in checked exceptions.
 - EG: 
 package com.demo;
 
@@ -760,6 +762,27 @@ public class UserValidation
 		}
 	}
 }
+----------------------------------------------------------------------------------------------------------------------------------------
+Threads: 
+- single process running synchronously
+MultiThreading:
+- multiple processes running asynchronously
+MultiTasking:
+- multiple processes/tasks running synchronously
+
+Thread class():
+- start()
+- run()
+
+JDBC:
+-Java DataBase Connectivity:
+	> user authentication/authorisation
+-JPA:
+	> Java Persistent API
+-JavaB:
+	> data and objects are transferred
+-IOC:
+	> used for springboot
 
 
 
