@@ -777,6 +777,47 @@ Thread class():
 JDBC:
 -Java DataBase Connectivity:
 	> user authentication/authorisation
+	> it is an API in java that enables connectivity to database
+	> relational database(MySQL, PostGreSQL, Oracle)
+	> Features:
+		- only connects RDb
+		- it supports threads(operations: [CRUD]- Create, Read, Update, Delete)
+	> Implementation of JDBC
+		- load the drivers
+		- create the connection using URL,username,password
+		- create a statement
+		- execute the query
+		- close the connection
+	> EG:
+	-import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JDBCconnectivity 
+{
+	public static void main(String args[])
+	{
+		String url = "jdbc:mysql://localhost:3306/?";
+		String username="root";
+		String password="Kgisl@123";
+		try
+		{
+			Connection c = DriverManager.getConnection(url, username, password);
+			System.out.println("Successfully connected");
+			Statement s = c.createStatement();
+			ResultSet data = s.executeQuery("select * from emp;");
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+	} 
+}
+
+
 -JPA:
 	> Java Persistent API
 -JavaB:
