@@ -620,9 +620,146 @@ e) Hybrid
 - A task can be performed into multiple forms, multiple times.
 - Poly- many, Morphism - forms.
 - Annotation: providing information to the system. (eg: @Override)
+- Method overloading: same function name, different parameters (compile-time)
+- Method overriding: 
 - EG:
+package com.demo;
 
+public class Polymorphism 
+{
+	public static void main(String args[])
+	{
+		SingleParent sp = new SingleChild();
+		sp.add();
+	}
+}
 
+class SingleParent
+{
+	public void add()
+	{
+		System.out.println("ParentMethod");
+	}
+}
+
+class SingleChild extends SingleParent
+{
+	@Override
+	public void add()
+	{
+		System.out.println("ChildMethod");
+	}
+}
+----------------------------------------------------------------------------------------------------------------------
+package com.demo;
+
+public class PolymorphismOverload 
+{
+	public static void main(String args[])
+	{
+		Overload o=new Overload();
+		o.sub();
+		System.out.println(o.sub(48));
+		System.out.println(o.sub(48,24));
+	}
+}
+
+class Overload
+{
+	public void sub()
+	{
+		System.out.println("Subtraction");
+	}
+	public int sub(int a)
+	{
+		return a;
+	}
+	public int sub(int a,int b)
+	{
+		return a-b;
+	}
+}
+----------------------------------------------------------------------------------------------------------------------------
+EXCEPTION HANDLING:
+- interruption in program while running
+- types: 
+        (A)compile time exception(checked exception- shows error while typing)
+                - i/o exception
+                - sql exception
+                - parse exception
+                - arithmetic exception
+        (B)runtime exception(unchecked exception- shows error after execution)
+                - null pointer
+                - index out of bound
+                - number format exception
+- TRY, CATCH, THROW, THROWS, FINALLY
+- EG: 
+package com.demo;
+
+public class ExceptionClass 
+{
+	public static void main(String args[])
+	{
+		try 
+		{
+			System.out.println(12/0);
+		}
+		catch(ArithmeticException ae)
+		{
+			//System.out.println("Undefined");
+			ae.printStackTrace();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println(12/1);
+		}
+	}
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+package com.demo;
+
+public class NameValidator extends Exception
+{
+	NameValidator(String s)
+	{
+		super(s);
+	}
+}
+------------------------------------------------------------------------------------------------------------------------------------------------
+CUSTOM EXCEPTION:
+package com.demo;
+import java.util.Scanner;
+
+public class UserValidation 
+{
+	public static void main(String args[]) throws NameValidator
+	{
+		Scanner nm = new Scanner(System.in);
+		System.out.println("Enter the string:");
+		String name = nm.nextLine().toUpperCase();
+		char[] c=name.toCharArray();
+		for(char ch:c)
+		{
+			if('A' <= ch && 'Z' >= ch)
+			{
+				System.out.println("Validation Successful");
+			}
+			else if('0' <= ch && '9' >= ch)
+			{
+				throw new NameValidator("number");
+			}
+			else
+			{
+				throw new NameValidator("Symbol");
+			}
+		}
+	}
+}
 
 
 
